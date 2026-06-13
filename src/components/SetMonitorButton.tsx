@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import {
@@ -8,6 +7,7 @@ import {
   MONITOR_INTERVAL_OPTIONS,
   type ParserRequest,
 } from "@/lib/types";
+import { disableRequestMonitor, setRequestMonitor } from "@/lib/supabase";
 
 function TimerIcon({ className }: { className?: string }) {
   return (
@@ -29,11 +29,12 @@ function TimerIcon({ className }: { className?: string }) {
 export function SetMonitorButton({
   request,
   compact = false,
+  onUpdated,
 }: {
   request: ParserRequest;
   compact?: boolean;
+  onUpdated?: () => void | Promise<void>;
 }) {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [intervalSeconds, setIntervalSeconds] = useState(
     MONITOR_INTERVAL_OPTIONS[1].seconds,
@@ -48,17 +49,9 @@ export function SetMonitorButton({
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/requests/${request.id}/monitor`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ intervalSeconds, durationSeconds }),
-      });
-      if (!response.ok) {
-        const payload = await response.json().catch(() => ({}));
-        throw new Error(payload.error ?? "Failed to save monitor");
-      }
+      await setRequestMonitor(request.id, intervalSeconds, durationSeconds);
       setOpen(false);
-      router.refresh();
+      await onUpdated?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save monitor");
     } finally {
@@ -70,15 +63,9 @@ export function SetMonitorButton({
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/requests/${request.id}/monitor`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        const payload = await response.json().catch(() => ({}));
-        throw new Error(payload.error ?? "Failed to stop monitor");
-      }
+      await disableRequestMonitor(request.id);
       setOpen(false);
-      router.refresh();
+      await onUpdated?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to stop monitor");
     } finally {

@@ -10,7 +10,13 @@ import {
 } from "@/lib/format";
 import type { ParserRequest } from "@/lib/types";
 
-export function RequestsTable({ requests }: { requests: ParserRequest[] }) {
+export function RequestsTable({
+  requests,
+  onUpdated,
+}: {
+  requests: ParserRequest[];
+  onUpdated?: () => void | Promise<void>;
+}) {
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
       <div className="overflow-x-auto">
@@ -39,7 +45,7 @@ export function RequestsTable({ requests }: { requests: ParserRequest[] }) {
           </thead>
           <tbody className="divide-y divide-slate-100">
             {requests.map((request) => (
-              <RequestRow key={request.id} request={request} />
+              <RequestRow key={request.id} request={request} onUpdated={onUpdated} />
             ))}
           </tbody>
         </table>
@@ -48,7 +54,13 @@ export function RequestsTable({ requests }: { requests: ParserRequest[] }) {
   );
 }
 
-function RequestRow({ request }: { request: ParserRequest }) {
+function RequestRow({
+  request,
+  onUpdated,
+}: {
+  request: ParserRequest;
+  onUpdated?: () => void | Promise<void>;
+}) {
   const product = request.product;
   const hasChanges = (request.monitor_events?.length ?? 0) > 0;
 
@@ -93,7 +105,7 @@ function RequestRow({ request }: { request: ParserRequest }) {
         </td>
         <td className="px-4 py-4 whitespace-nowrap">
           <div className="flex flex-col gap-2">
-            <SetMonitorButton request={request} compact />
+            <SetMonitorButton request={request} compact onUpdated={onUpdated} />
             {request.monitor_enabled ? (
               <span className="text-xs text-sky-700">Active</span>
             ) : null}

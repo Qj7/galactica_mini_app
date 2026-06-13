@@ -26,7 +26,13 @@ function MetaItem({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function RequestCard({ request }: { request: ParserRequest }) {
+export function RequestCard({
+  request,
+  onUpdated,
+}: {
+  request: ParserRequest;
+  onUpdated?: () => void | Promise<void>;
+}) {
   const [expanded, setExpanded] = useState(false);
   const title = getRequestTitle(request);
   const previewMeta = getRequestPreviewMeta(request);
@@ -60,7 +66,7 @@ export function RequestCard({ request }: { request: ParserRequest }) {
         ) : null}
 
         <div className="mt-4">
-          <SetMonitorButton request={request} compact />
+          <SetMonitorButton request={request} compact onUpdated={onUpdated} />
         </div>
       </div>
 
