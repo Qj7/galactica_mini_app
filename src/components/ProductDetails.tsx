@@ -1,3 +1,4 @@
+import { SellersTable } from "@/components/SellersTable";
 import {
   formatDateTime,
   formatMoney,
@@ -109,9 +110,7 @@ export function ProductDetails({ product }: { product: Product | null }) {
         value={truncate(product.description, 120)}
         fullWidth
       />
-      {product.comment ? (
-        <Field label="Comment" value={product.comment} fullWidth />
-      ) : null}
+      <SellersTable product={product} />
       {product.note ? (
         <Field label="Note" value={product.note} fullWidth />
       ) : null}
