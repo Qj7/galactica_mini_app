@@ -92,7 +92,7 @@ export function RequestsPage() {
 
   if (loading && requests.length === 0 && !error) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white px-4 py-8 text-center text-sm text-slate-500">
+      <div className="rounded-xl border border-slate-800 bg-slate-900 px-4 py-8 text-center text-sm text-slate-400">
         Loading requests…
       </div>
     );
@@ -100,7 +100,7 @@ export function RequestsPage() {
 
   if (error) {
     return (
-      <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+      <div className="rounded-xl border border-rose-900 bg-rose-950/50 px-4 py-3 text-sm text-rose-300">
         {error}
       </div>
     );
@@ -112,9 +112,9 @@ export function RequestsPage() {
       <StatusFilter active={status} stats={stats} />
 
       {requests.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
-          <p className="text-base font-medium text-slate-900">No requests yet</p>
-          <p className="mt-2 text-sm text-slate-500">
+        <div className="rounded-2xl border border-dashed border-slate-700 bg-slate-900 px-6 py-14 text-center">
+          <p className="text-base font-medium text-slate-100">No requests yet</p>
+          <p className="mt-2 text-sm text-slate-400">
             New registrations will appear here.
           </p>
         </div>
@@ -124,7 +124,7 @@ export function RequestsPage() {
             <RequestsTable requests={requests} onUpdated={refresh} />
           </div>
           <div className="flex flex-col gap-3 lg:hidden">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-400">
               {requests.length} {requests.length === 1 ? "request" : "requests"}
             </p>
             {requests.map((request) => (

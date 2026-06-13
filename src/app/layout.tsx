@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Galactica Admin — Registrations",
-  description: "Admin panel for product registration requests",
+  title: "Galactica — Smart Warehouse",
+  description: "Admin panel for smart warehouse product requests",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="flex min-h-full flex-col bg-slate-50 text-slate-900"
+        className="flex min-h-full flex-col bg-slate-950 text-slate-100"
         suppressHydrationWarning
       >
         {children}

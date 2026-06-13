@@ -5,11 +5,11 @@ const ITEMS: Array<{
   label: string;
   accent: string;
 }> = [
-  { key: "all", label: "Total", accent: "text-slate-900" },
-  { key: "pending", label: "Pending", accent: "text-amber-700" },
-  { key: "processing", label: "Processing", accent: "text-sky-700" },
-  { key: "done", label: "Done", accent: "text-emerald-700" },
-  { key: "failed", label: "Failed", accent: "text-rose-700" },
+  { key: "all", label: "Total", accent: "text-slate-100" },
+  { key: "pending", label: "Pending", accent: "text-amber-400" },
+  { key: "processing", label: "Processing", accent: "text-sky-400" },
+  { key: "done", label: "Done", accent: "text-emerald-400" },
+  { key: "failed", label: "Failed", accent: "text-rose-400" },
 ];
 
 export function StatsBar({
@@ -28,13 +28,13 @@ export function StatsBar({
         return (
           <div
             key={item.key}
-            className={`rounded-xl border bg-white p-4 shadow-sm transition ${
+            className={`rounded-xl border bg-slate-900 p-4 shadow-sm transition ${
               isActive
-                ? "border-slate-900 ring-2 ring-slate-900/10"
-                : "border-slate-200"
+                ? "border-slate-500 ring-2 ring-slate-500/20"
+                : "border-slate-800"
             }`}
           >
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
               {item.label}
             </p>
             <p className={`mt-1 text-2xl font-semibold tabular-nums ${item.accent}`}>

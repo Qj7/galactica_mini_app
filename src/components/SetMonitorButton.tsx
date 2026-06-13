@@ -78,7 +78,7 @@ export function SetMonitorButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`inline-flex items-center justify-center gap-2 rounded-xl font-medium text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-50 active:scale-[0.98] ${
+        className={`inline-flex items-center justify-center gap-2 rounded-xl font-medium text-slate-300 ring-1 ring-slate-700 transition hover:bg-slate-800 active:scale-[0.98] ${
           compact
             ? "min-h-10 px-3 py-2 text-sm"
             : "min-h-11 px-4 py-2.5 text-sm"
@@ -89,20 +89,20 @@ export function SetMonitorButton({
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 p-4 sm:items-center">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-4 sm:items-center">
           <div
             className="absolute inset-0"
             onClick={() => !loading && setOpen(false)}
             aria-hidden
           />
-          <div className="relative w-full max-w-md overflow-hidden rounded-2xl bg-white p-5 shadow-xl">
+          <div className="relative w-full max-w-md overflow-hidden rounded-2xl bg-slate-900 p-5 shadow-xl ring-1 ring-slate-800">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-700">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-950 text-sky-400">
                 <TimerIcon className="h-5 w-5" />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-slate-900">Set timeout</h2>
-                <p className="mt-1 text-sm text-slate-500">
+                <h2 className="text-lg font-semibold text-slate-100">Set timeout</h2>
+                <p className="mt-1 text-sm text-slate-400">
                   Periodically re-check this product via API and log any changes.
                 </p>
               </div>
@@ -110,13 +110,13 @@ export function SetMonitorButton({
 
             <div className="mt-5 space-y-4">
               <label className="flex items-center gap-3">
-                <span className="w-24 shrink-0 text-sm font-medium text-slate-700">
+                <span className="w-24 shrink-0 text-sm font-medium text-slate-300">
                   Check every
                 </span>
                 <select
                   value={intervalSeconds}
                   onChange={(event) => setIntervalSeconds(Number(event.target.value))}
-                  className="select-input min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 pr-9 text-sm text-slate-900 outline-none ring-sky-500 focus:ring-2"
+                  className="select-input min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2.5 pr-9 text-sm text-slate-100 outline-none ring-sky-500 focus:ring-2"
                   disabled={loading}
                 >
                   {MONITOR_INTERVAL_OPTIONS.map((option) => (
@@ -128,11 +128,11 @@ export function SetMonitorButton({
               </label>
 
               <label className="flex items-center gap-3">
-                <span className="w-24 shrink-0 text-sm font-medium text-slate-700">For</span>
+                <span className="w-24 shrink-0 text-sm font-medium text-slate-300">For</span>
                 <select
                   value={durationSeconds}
                   onChange={(event) => setDurationSeconds(Number(event.target.value))}
-                  className="select-input min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2.5 pr-9 text-sm text-slate-900 outline-none ring-sky-500 focus:ring-2"
+                  className="select-input min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2.5 pr-9 text-sm text-slate-100 outline-none ring-sky-500 focus:ring-2"
                   disabled={loading}
                 >
                   {MONITOR_DURATION_OPTIONS.map((option) => (
@@ -145,7 +145,7 @@ export function SetMonitorButton({
             </div>
 
             {error ? (
-              <p className="mt-4 rounded-xl bg-rose-50 px-3 py-2 text-sm text-rose-700">
+              <p className="mt-4 rounded-xl bg-rose-950/50 px-3 py-2 text-sm text-rose-300">
                 {error}
               </p>
             ) : null}
@@ -156,7 +156,7 @@ export function SetMonitorButton({
                   type="button"
                   onClick={stopMonitor}
                   disabled={loading}
-                  className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium text-rose-700 ring-1 ring-rose-200 hover:bg-rose-50 disabled:opacity-60"
+                  className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium text-rose-400 ring-1 ring-rose-900 hover:bg-rose-950/50 disabled:opacity-60"
                 >
                   Stop monitoring
                 </button>
@@ -165,7 +165,7 @@ export function SetMonitorButton({
                 type="button"
                 onClick={() => setOpen(false)}
                 disabled={loading}
-                className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 disabled:opacity-60"
+                className="min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-300 ring-1 ring-slate-700 hover:bg-slate-800 disabled:opacity-60"
               >
                 Cancel
               </button>
@@ -173,7 +173,7 @@ export function SetMonitorButton({
                 type="button"
                 onClick={saveMonitor}
                 disabled={loading}
-                className="min-h-11 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800 disabled:opacity-60"
+                className="min-h-11 rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-medium text-slate-950 hover:bg-white disabled:opacity-60"
               >
                 {loading ? "Saving…" : "Save"}
               </button>

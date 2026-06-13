@@ -18,11 +18,11 @@ function Field({
 }) {
   return (
     <div className={fullWidth ? "col-span-full" : undefined}>
-      <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+      <dt className="text-xs font-medium uppercase tracking-wide text-slate-400">
         {label}
       </dt>
       <dd
-        className={`mt-0.5 text-sm text-slate-900 ${mono ? "font-mono text-xs break-all" : ""}`}
+        className={`mt-0.5 text-sm text-slate-200 ${mono ? "font-mono text-xs break-all" : ""}`}
         title={value}
       >
         {value}
@@ -34,7 +34,7 @@ function Field({
 export function ProductSummary({ product }: { product: Product | null }) {
   if (!product) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500">
+      <div className="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-slate-400">
         Product not found or deleted
       </div>
     );
@@ -43,14 +43,14 @@ export function ProductSummary({ product }: { product: Product | null }) {
   const identifier = product.sku ?? product.ean ?? "No SKU";
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
+    <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="font-mono text-sm font-semibold text-slate-900">
+          <p className="font-mono text-sm font-semibold text-slate-100">
             {identifier}
           </p>
           {product.description ? (
-            <p className="mt-1 line-clamp-2 text-sm text-slate-600">
+            <p className="mt-1 line-clamp-2 text-sm text-slate-400">
               {product.description}
             </p>
           ) : null}
@@ -63,17 +63,17 @@ export function ProductSummary({ product }: { product: Product | null }) {
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {product.price_usd != null && (
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+          <span className="rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-300 ring-1 ring-slate-700">
             {formatMoney(product.price_usd, "USD")}
           </span>
         )}
         {product.price_eur != null && (
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+          <span className="rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-300 ring-1 ring-slate-700">
             {formatMoney(product.price_eur, "EUR")}
           </span>
         )}
         {product.qty != null && (
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+          <span className="rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-300 ring-1 ring-slate-700">
             Qty {product.qty}
           </span>
         )}
@@ -85,7 +85,7 @@ export function ProductSummary({ product }: { product: Product | null }) {
 export function ProductDetails({ product }: { product: Product | null }) {
   if (!product) {
     return (
-      <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
+      <div className="rounded-lg border border-dashed border-slate-700 bg-slate-900/50 p-4 text-sm text-slate-400">
         Product not found or deleted
       </div>
     );

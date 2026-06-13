@@ -6,9 +6,9 @@ export function MonitorStatus({ request }: { request: ParserRequest }) {
   if (!request.monitor_enabled) return null;
 
   return (
-    <div className="rounded-xl border border-sky-200 bg-sky-50 px-3 py-2 text-sm text-sky-900">
+    <div className="rounded-xl border border-sky-900 bg-sky-950/40 px-3 py-2 text-sm text-sky-200">
       <p className="font-medium">Monitoring active</p>
-      <p className="mt-1 text-xs text-sky-800">
+      <p className="mt-1 text-xs text-sky-300">
         {request.monitor_interval_seconds
           ? formatDuration(request.monitor_interval_seconds)
           : "—"}
@@ -17,7 +17,7 @@ export function MonitorStatus({ request }: { request: ParserRequest }) {
           : null}
       </p>
       {request.next_check_at ? (
-        <p className="mt-1 text-xs text-sky-700">
+        <p className="mt-1 text-xs text-sky-400">
           Next check {formatRelative(request.next_check_at)}
         </p>
       ) : null}

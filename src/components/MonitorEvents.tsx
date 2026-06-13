@@ -30,7 +30,7 @@ export function MonitorEvents({ events }: { events: MonitorEvent[] | undefined }
 
   if (sorted.length === 0) {
     return (
-      <p className="text-sm text-slate-500">No changes detected yet.</p>
+      <p className="text-sm text-slate-400">No changes detected yet.</p>
     );
   }
 
@@ -41,20 +41,20 @@ export function MonitorEvents({ events }: { events: MonitorEvent[] | undefined }
         return (
           <div
             key={event.id}
-            className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-3"
+            className="rounded-xl border border-emerald-900 bg-emerald-950/40 p-3"
           >
-            <p className="text-xs text-emerald-800">
+            <p className="text-xs text-emerald-400">
               {formatRelative(event.checked_at)} · {formatDateTime(event.checked_at)}
             </p>
             <ul className="mt-2 space-y-1.5">
               {fields.map(([field, change]) => (
-                <li key={field} className="text-sm text-slate-800">
+                <li key={field} className="text-sm text-slate-200">
                   <span className="font-medium">{FIELD_LABELS[field] ?? field}:</span>{" "}
                   <span className="text-slate-500 line-through">
                     {formatValue(change.before)}
                   </span>
                   {" → "}
-                  <span className="font-medium text-emerald-800">
+                  <span className="font-medium text-emerald-400">
                     {formatValue(change.after)}
                   </span>
                 </li>

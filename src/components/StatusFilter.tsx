@@ -41,14 +41,14 @@ export function StatusFilter({
               href={href}
               className={`inline-flex min-h-11 snap-start items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition active:scale-[0.98] ${
                 isActive
-                  ? "bg-slate-900 text-white shadow-sm"
-                  : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50"
+                  ? "bg-slate-100 text-slate-950 shadow-sm"
+                  : "bg-slate-900 text-slate-300 ring-1 ring-slate-700 hover:bg-slate-800"
               }`}
             >
               {filter.label}
               <span
                 className={`rounded-full px-2 py-0.5 text-xs tabular-nums ${
-                  isActive ? "bg-white/15 text-white" : "bg-slate-100 text-slate-600"
+                  isActive ? "bg-slate-950/15 text-slate-950" : "bg-slate-800 text-slate-400"
                 }`}
               >
                 {countForFilter(stats, filter.value)}

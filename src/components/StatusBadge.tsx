@@ -1,10 +1,10 @@
 import type { RequestStatus } from "@/lib/types";
 
 const STYLES: Record<RequestStatus, string> = {
-  pending: "bg-amber-100 text-amber-800 ring-amber-200",
-  processing: "bg-sky-100 text-sky-800 ring-sky-200",
-  done: "bg-emerald-100 text-emerald-800 ring-emerald-200",
-  failed: "bg-rose-100 text-rose-800 ring-rose-200",
+  pending: "bg-amber-950 text-amber-300 ring-amber-800",
+  processing: "bg-sky-950 text-sky-300 ring-sky-800",
+  done: "bg-emerald-950 text-emerald-300 ring-emerald-800",
+  failed: "bg-rose-950 text-rose-300 ring-rose-800",
 };
 
 const LABELS: Record<RequestStatus, string> = {
